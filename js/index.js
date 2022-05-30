@@ -38,10 +38,43 @@ function check_word() { // returns true if word matches, false otherwise
         typedWord += typedChar;
     }
     console.log("Typed: ", typedWord);
+
+     // invalid word
+    if (!word_list.includes(typedWord)) {
+        console.log("INVALIDWORD");
+
+        for (let c = 1; c <= 5; c++) {
+            let id = ".g" + currRow.toString() + "-" + c.toString();
+            $(id).text(placeholder);
+        }
+
+        currRow-=1;
+        currCol = 1;
+
+        return false;
+    }
+
+    for (let c = 1; c <= 5; c++) {
+        let id = ".g" + currRow.toString() + "-" + c.toString();
+        typedChar = $(id).text().toLowerCase();
+
+        if (currWord.includes(typedChar) && currWord.charAt(c-1) === typedChar) {
+            $(id).css("background-color", "green");
+        }
+        else if (currWord.includes(typedChar) && currWord.charAt(c-1) !== typedChar) {
+            $(id).css("background-color", "yellow");
+        }
+        else {
+            $(id).css("background-color", "lightgray");
+        }
+    }
+
+    // won game
     if (typedWord === currWord) {
         window.alert("Congrats! You've won!");
         return true;
     }
+
     return false;
 }
 
