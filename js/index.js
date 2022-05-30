@@ -12,6 +12,13 @@ $(document).ready(function(){
 })
 
 function reset_game() {
+    for (let r = 1; r <= 6; r++) {
+        for (let c = 1; c <= 5; c++) {
+            id = ".g" + r.toString() + "-" + c.toString();
+            console.log(id);
+            $(id).empty();
+        }
+    }
     return;
 }
 
