@@ -34,7 +34,8 @@ function check_word() { // returns true if word matches, false otherwise
     typedWord = "";
     for (let c = 1; c <= 5; c++) {
         let id = ".g" + currRow.toString() + "-" + c.toString();
-        typedWord += $(id).text().toLowerCase();
+        typedChar = $(id).text().toLowerCase();
+        typedWord += typedChar;
     }
     console.log("Typed: ", typedWord);
     if (typedWord === currWord) {
