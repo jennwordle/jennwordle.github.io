@@ -1,1 +1,4 @@
-console.log("Here");
+$(document).ready(function(){
+    console.log("Hereddd");
+
+})
