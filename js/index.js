@@ -31,7 +31,7 @@ function play_game() {
 }
 
 function check_word() { // returns true if word matches, false otherwise
-    typedWord = "";
+    let typedWord = "";
     for (let c = 1; c <= 5; c++) {
         let id = ".g" + currRow.toString() + "-" + c.toString();
         typedChar = $(id).text().toLowerCase();
@@ -39,13 +39,14 @@ function check_word() { // returns true if word matches, false otherwise
     }
     console.log("Typed: ", typedWord);
     if (typedWord === currWord) {
+        window.alert("Congrats! You've won!");
         return true;
     }
     return false;
 }
 
 function end_game() {
-    window.alert("Congrats! You've won!");
+    window.alert("The correct word was: " + currWord);
 }
 
 $("body").keydown(function(e){
@@ -70,6 +71,7 @@ $("body").keydown(function(e){
             currRow += 1;
             currCol = 1;
             if (currRow > 6) {
+                check_word()
                 console.log("ENDGAME");
                 end_game();
                 return;
